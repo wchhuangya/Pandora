@@ -1,9 +1,9 @@
 package com.ch.wchhuangya.android.pandora.client;
 
-import com.ch.wchhuangya.android.pandora.interfaces.ResponseError;
-import com.ch.wchhuangya.android.pandora.interfaces.ResponseSuccess;
 import com.ch.wchhuangya.android.pandora.model.NewsDetail;
 import com.ch.wchhuangya.android.pandora.model.NewsList;
+import com.ch.wchhuangya.lib.interfaces.ResponseError;
+import com.ch.wchhuangya.lib.interfaces.ResponseSuccess;
 import com.ch.wchhuangya.lib.retrofit.RetrofitUtil;
 import com.ch.wchhuangya.lib.rxandroid.RxandroidUtil;
 

@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.interfaces;
+package com.ch.wchhuangya.lib.interfaces;
 
 /**
  * 网络请求成功后处理的方法
