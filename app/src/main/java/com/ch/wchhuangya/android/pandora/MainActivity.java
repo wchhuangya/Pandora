@@ -2,11 +2,10 @@ package com.ch.wchhuangya.android.pandora;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
-import com.ch.wchhuangya.lib.util.StringUtil;
+import com.ch.wchhuangya.android.pandora.client.NewsHandle;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-
-        Toast.makeText(this, "测试结果：" + StringUtil.isEmpty(""), Toast.LENGTH_SHORT).show();
 
         mBottomBar = (BottomNavigationBar) findViewById(R.id.main_bottom_nav_bar);
 
@@ -29,5 +26,27 @@ public class MainActivity extends AppCompatActivity {
                 .initialise();
 
 
+        mBottomBar.setTabSelectedListener(new BottomNavigationBar.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(int position) {
+                if (position == 0)
+                NewsHandle.getNewsList("1", 1, 20, newsList -> {
+                    System.out.println("数量：" + newsList.getCount() + "，标题1：" + newsList.getData().get(0).getTitle()
+                            + "，图片1：" + newsList.getData().get(0).getTop_image());
+                }, throwable -> {
+                    System.out.println("出问题啦：" + throwable.getMessage());
+                });
+            }
+
+            @Override
+            public void onTabUnselected(int position) {
+
+            }
+
+            @Override
+            public void onTabReselected(int position) {
+
+            }
+        });
     }
 }
