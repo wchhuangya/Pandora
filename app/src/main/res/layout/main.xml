@@ -1,27 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </FrameLayout>
+    <data>
+        <variable
+            name="mainVM"
+            type="com.ch.wchhuangya.android.pandora.vm.MainVM"/>
+    </data>
 
-    <com.ashokvarma.bottomnavigation.BottomNavigationBar
-        android:id="@+id/main_bottom_nav_bar"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/main_drawer"
         android:layout_width="match_parent"
-        app:bnbBackgroundColor="@android:color/white"
-        app:bnbMode="mode_fixed"
-        app:bnbBackgroundStyle="background_style_static"
-        app:bnbActiveColor="#1296db"
-        android:layout_height="65dp"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:titleTextColor="@color/textColorPrimary"
+                app:title="@{mainVM.toolbarTitle}"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </FrameLayout>
+
+            <com.ashokvarma.bottomnavigation.BottomNavigationBar
+                android:id="@+id/bottom_nav_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:bnbActiveColor="#1296db"
+                app:bnbInactiveColor="#888"
+                app:bnbBackgroundColor="@android:color/white"
+                app:bnbBackgroundStyle="background_style_static"
+                app:bnbMode="mode_fixed"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="#fff"
+            >
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="待续"/>
+        </LinearLayout>
+    </android.support.v4.widget.DrawerLayout>
+</layout>

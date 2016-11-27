@@ -1,6 +1,7 @@
 package com.ch.wchhuangya.android.pandora;
 
 import com.ch.wchhuangya.android.pandora.client.NewsHandle;
+import com.ch.wchhuangya.android.pandora.enums.MainEnum;
 
 import org.junit.Test;
 
@@ -26,5 +27,11 @@ public class ExampleUnitTest {
             System.out.println("出问题啦：" + throwable.getMessage());
         });
         assertEquals(4, 2 + 1);
+    }
+
+    @Test
+    public void inputEnumValues() throws Exception {
+        System.out.println(MainEnum.BottomBarType.im.ordinal());
+        System.out.println(MainEnum.BottomBarType.getName(MainEnum.BottomBarType.news));
     }
 }
