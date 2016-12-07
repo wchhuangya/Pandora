@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.fragment;
+package com.ch.wchhuangya.android.pandora.view.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -24,6 +24,7 @@ public class SingleNewsFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.common_recyclerview, container, false);
+        mCrvVM = new CommonRecyclerViewVM(getContext());
         mBinding.setVm(mCrvVM);
         return mBinding.getRoot();
     }

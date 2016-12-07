@@ -1,5 +1,7 @@
 package com.ch.wchhuangya.android.pandora.vm;
 
+import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -15,6 +17,10 @@ public abstract class BaseVM {
 
     /** VM 模式中，View 引用的持有 */
     protected AppCompatActivity mActivity;
+
+    protected Fragment mFragment;
+
+    protected Context mContext;
     /** 所有用到的观察者 */
     protected List<Subscription> mSubscriptions = new ArrayList<>();
 

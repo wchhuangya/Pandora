@@ -44,4 +44,7 @@ dependencies {
 
     // material 风格的 ProgressBar
     compile 'me.zhanghai.android.materialprogressbar:library:1.3.0'
+
+    // 网格布局
+    compile 'com.android.support:gridlayout-v7:25.0.1'
 }

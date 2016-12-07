@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.fragment;
+package com.ch.wchhuangya.android.pandora.view.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

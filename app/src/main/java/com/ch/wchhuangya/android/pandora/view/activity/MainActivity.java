@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.view;
+package com.ch.wchhuangya.android.pandora.view.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -9,7 +9,8 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.MainBinding;
 import com.ch.wchhuangya.android.pandora.enums.MainEnum;
-import com.ch.wchhuangya.android.pandora.fragment.NewsFragment;
+import com.ch.wchhuangya.android.pandora.view.activity.calculator.CalculatorFragment;
+import com.ch.wchhuangya.android.pandora.view.fragment.NewsFragment;
 import com.ch.wchhuangya.android.pandora.vm.MainVM;
 
 public class MainActivity extends BaseActivity {
@@ -68,6 +69,7 @@ public class MainActivity extends BaseActivity {
                 mMainVM.toolbarTitle.set("生活");
             } else if (position == MainEnum.BottomBarType.tool.ordinal()) { // 工具
                 mMainVM.toolbarTitle.set("工具");
+                mMainVM.setMainContent(R.id.main_frame, new CalculatorFragment());
             } else if (position == MainEnum.BottomBarType.study.ordinal()) { // 学习
                 mMainVM.toolbarTitle.set("学习");
             } else if (position == MainEnum.BottomBarType.im.ordinal()) { // IM
