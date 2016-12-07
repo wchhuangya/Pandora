@@ -23,15 +23,18 @@ public class ExampleUnitTest {
         NewsHandle.getNewsList("1", 1, 20, newsList -> {
             System.out.println("数量：" + newsList.getCount() + "，标题1：" + newsList.getData().get(0).getTitle()
                     + "，图片1：" + newsList.getData().get(0).getTop_image());
+            assertEquals(3, 2 + 1);
         }, throwable -> {
             System.out.println("出问题啦：" + throwable.getMessage());
+            assertEquals(4, 2 + 1);
         });
-        assertEquals(4, 2 + 1);
+
     }
 
     @Test
     public void inputEnumValues() throws Exception {
         System.out.println(MainEnum.BottomBarType.im.ordinal());
         System.out.println(MainEnum.BottomBarType.getName(MainEnum.BottomBarType.news));
+        System.out.println("包含元素数：" + MainEnum.NewsTitle.values().length);
     }
 }

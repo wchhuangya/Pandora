@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="vm"
+            type="com.ch.wchhuangya.android.pandora.vm.CommonRecyclerViewVM"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimaryDark"
+            android:iconifiedByDefault="true"
+            android:imeOptions="actionSearch"
+            android:queryHint="@string/search"
+            android:visibility="@{vm.searchShow ? View.VISIBLE : View.GONE}"
+            />
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/common_recyclerview_refreshlayout"
+            android:layout_marginTop="@{vm.searchShow ? @dimen/search_view_height : @dimen/no_dp}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/common_recyclerview_recyclerview"
+                android:visibility="@{vm.listShow ? View.VISIBLE : View.GONE}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
+            android:id="@+id/common_recyclerview_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center"
+            android:visibility="@{vm.pbShow ? View.VISIBLE : View.GONE}"
+            app:mpb_progressStyle="horizontal"/>
+
+        <FrameLayout
+            android:id="@+id/common_recyclerview_tips_fl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/common_recyclerview_tips_tv"
+            android:visibility="@{vm.tipsShow ? View.VISIBLE : View.GONE}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </FrameLayout>
+</layout>

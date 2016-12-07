@@ -2,7 +2,6 @@ package com.ch.wchhuangya.android.pandora.view;
 
 import android.os.Bundle;
 
-import com.ch.wchhuangya.android.pandora.BaseActivity;
 import com.ch.wchhuangya.android.pandora.vm.MainVM;
 
 public class MainActivity extends BaseActivity {

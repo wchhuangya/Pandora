@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora;
+package com.ch.wchhuangya.android.pandora.view;
 
 import android.support.v7.app.AppCompatActivity;
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="singleNews"
+            type="com.ch.wchhuangya.android.pandora.model.SingleNews"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        >
+
+        <ImageView
+            android:id="@+id/single_news_item_iv"
+            android:layout_width="100dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"
+            bind:squareImg="@{singleNews.imgUrl}"
+            tools:background="@mipmap/pic_default"
+            />
+
+        <TextView
+            android:id="@+id/single_news_item_title_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/single_news_item_iv"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="#333"
+            android:textSize="17sp"
+            android:text="@{singleNews.newsTitle}"
+            tools:text="“碟中碟5”为什么值得大家去电影院看一下"
+            />
+
+        <TextView
+            android:id="@+id/single_news_item_subtitle_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/single_news_item_title_tv"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/single_news_item_iv"
+            android:maxLines="2"
+            android:textColor="#777"
+            android:textSize="13sp"
+            android:text="@{singleNews.newsSummary}"
+            tools:text="整合 007 英伦复古、碟影重重的独狼、速度与激情的飚车"
+            />
+
+    </RelativeLayout>
+</layout>

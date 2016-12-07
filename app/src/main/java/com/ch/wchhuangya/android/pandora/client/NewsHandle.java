@@ -24,7 +24,7 @@ public class NewsHandle {
      */
     public static void getNewsList(String tableNum, int page, int pageSize, ResponseSuccess<NewsList> success, ResponseError error) {
         newsService.getNewsList(tableNum, page, pageSize)
-                    .compose(RxandroidUtil.applySchedulers())
+                    //.compose(RxandroidUtil.applySchedulers())
                     .subscribe(success::onSuccess, error::onError);
     }
 

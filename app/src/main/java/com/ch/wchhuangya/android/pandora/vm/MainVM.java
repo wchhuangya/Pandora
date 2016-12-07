@@ -8,6 +8,7 @@ import android.view.Gravity;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
+import com.ch.wchhuangya.android.pandora.fragment.NewsFragment;
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.MainBinding;
 import com.ch.wchhuangya.android.pandora.enums.MainEnum;
@@ -50,6 +51,7 @@ public class MainVM extends BaseVM {
                 .addItem(new BottomNavigationItem(R.mipmap.bottom_bar_im, MainEnum.BottomBarType.getName(MainEnum.BottomBarType.im)))
                 .initialise();
         mBinding.bottomNavBar.setTabSelectedListener(mSelectedListener);
+        mActivity.getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new NewsFragment()).commit();
     }
 
     /** 底部导航栏标签选择事件 */
@@ -58,6 +60,7 @@ public class MainVM extends BaseVM {
         public void onTabSelected(int position) {
             if (position == MainEnum.BottomBarType.news.ordinal()) { // 新闻
                 toolbarTitle.set("新闻");
+                mActivity.getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new NewsFragment()).commit();
             } else if (position == MainEnum.BottomBarType.life.ordinal()) { // 生活
                 toolbarTitle.set("生活");
             } else if (position == MainEnum.BottomBarType.tool.ordinal()) { // 工具

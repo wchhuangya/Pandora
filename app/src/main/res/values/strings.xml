@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pandora</string>
+    <string name="search">搜索</string>
+    <string name="load_more">上拉加载更多</string>
 </resources>
