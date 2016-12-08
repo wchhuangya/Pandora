@@ -31,7 +31,7 @@
                 android:paddingRight="10dp"
                 android:text="@{cal.secondNum}"
                 android:textColor="#555"
-                android:textSize="40sp"
+                android:textSize="35sp"
                 tools:text="16"
                 />
 
@@ -78,6 +78,7 @@
                 android:layout_marginRight="5dp"
                 app:layout_rowWeight="1"
                 android:text="clear"
+                android:onClick="@{() -> cal.clear()}"
                 />
 
             <Button
@@ -93,12 +94,14 @@
                 android:layout_marginRight="5dp"
                 app:layout_rowWeight="1"
                 android:text="÷"
+                android:onClick="@{cal::operatorClick}"
                 />
 
             <Button
                 android:id="@+id/cal_multiply"
                 app:layout_rowWeight="1"
-                android:text="x"
+                android:text="×"
+                android:onClick="@{cal::operatorClick}"
                 />
 
             <Button
@@ -113,18 +116,21 @@
                 android:id="@+id/cal_8"
                 app:layout_rowWeight="1"
                 android:text="8"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
                 android:id="@+id/cal_9"
                 app:layout_rowWeight="1"
                 android:text="9"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
                 android:id="@+id/cal_minus"
                 app:layout_rowWeight="1"
-                android:text="—"
+                android:text="－"
+                android:onClick="@{cal::operatorClick}"
                 />
 
             <Button
@@ -132,24 +138,28 @@
                 android:layout_marginLeft="5dp"
                 app:layout_rowWeight="1"
                 android:text="4"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
                 android:id="@+id/cal_5"
                 app:layout_rowWeight="1"
                 android:text="5"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
                 android:id="@+id/cal_6"
                 app:layout_rowWeight="1"
                 android:text="6"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
                 android:id="@+id/cal_add"
                 app:layout_rowWeight="1"
                 android:text="+"
+                android:onClick="@{cal::operatorClick}"
                 />
 
             <Button
@@ -157,18 +167,21 @@
                 android:layout_marginLeft="5dp"
                 app:layout_rowWeight="1"
                 android:text="1"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
                 android:id="@+id/cal_2"
                 app:layout_rowWeight="1"
                 android:text="2"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
                 android:id="@+id/cal_3"
                 app:layout_rowWeight="1"
                 android:text="3"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
@@ -177,6 +190,7 @@
                 app:layout_rowWeight="1"
                 app:layout_gravity="fill_vertical"
                 android:text="="
+                android:onClick="@{() -> cal.equalsClick()}"
                 />
 
             <Button
@@ -184,18 +198,21 @@
                 android:layout_marginLeft="5dp"
                 app:layout_rowWeight="1"
                 android:text="%"
+                android:onClick="@{() -> cal.percentClick()}"
                 />
 
             <Button
                 android:id="@+id/cal_zero"
                 app:layout_rowWeight="1"
                 android:text="0"
+                android:onClick="@{cal::numClick}"
                 />
 
             <Button
                 android:id="@+id/cal_dot"
                 app:layout_rowWeight="1"
                 android:text="."
+                android:onClick="@{() -> cal.dotClick()}"
                 />
 
         </android.support.v7.widget.GridLayout>
