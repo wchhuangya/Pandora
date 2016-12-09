@@ -85,7 +85,7 @@ public class CalculatorVM extends BaseVM {
                 cal();
             }
         }
-
+        adjustNums();
         setInitState(false);
     }
 
@@ -93,21 +93,40 @@ public class CalculatorVM extends BaseVM {
     public void del() {
         boolean firstIsDigit = Character.isDigit(firstNum.get().charAt(0));
 
+        String first = firstNum.get();
         if (secondNum.get().length() > 0) { // 正在计算
-
+            if (first.length() <= 3) { // firstNum 是运算符，把 secondNum 的值赋值给 firstNum，secondNum 清空
+                handleFirstNum(sNum + "", sNum);
+                handleResNum(EQUALS_EMPTY_STR + secondNum.get(), sNum);
+                handleSecondNum("", 0L);
+                mCurOperator = null;
+            } /*else if (first.length() == 3) { // fistNum 是运算符 + 1 位数字，把数字删除，secondNum 的值给 resNum
+                handleFirstNum(first.substring(0, first.length() - 1), 0L);
+                handleResNum(EQUALS_EMPTY_STR + secondNum, sNum);
+            }*/ else { // firstNum 是运算符 + >=2 位的数字，把最后一个数字删除，重新计算
+                String changedVal = first.substring(0, first.length() - 1);
+                handleFirstNum(changedVal, Double.parseDouble(changedVal.substring(2)));
+                cal();
+            }
         } else { // 没有计算
-            String first = firstNum.get();
 
-            if (firstIsDigit) { // 全部数字
-                if (first.length() == 1) // 只有一位数字
+//            if (firstIsDigit) { // 全部数字
+                if ((first.startsWith("-") && first.length() == 2) || first.length() == 1) { // 只有一位数字
                     setInitState(true);
+                    handleFirstNum("0", 0L);
+                    handleResNum("", 0L);
+                } else {
+                    String changedFirst = first.substring(0, firstNum.get().length() - 1);
+                    handleFirstNum(changedFirst, Double.parseDouble(changedFirst));
+                    handleResNum(EQUALS_EMPTY_STR + fNum, fNum);
+                }
 
-                String changedFristNum = first.length() > 1 ? first.substring(0, firstNum.get().length() - 1) : "0";
+                /*String changedFristNum = first.length() > 1 ? first.substring(0, firstNum.get().length() - 1) : "0";
                 handleFirstNum(changedFristNum, Double.parseDouble(changedFristNum));
 
                 String changedResNum = firstNum.get().equals("0") ? "" : (EQUALS_EMPTY_STR + firstNum.get());
-                handleFirstNum(changedResNum, Double.parseDouble(changedFristNum));
-            } else if (first.length() == 1) { // 只有一个运算符
+                handleResNum(changedResNum, Double.parseDouble(changedFristNum));*/
+            /*} else if (first.length() == 1) { // 只有一个运算符
                 clear();
             } else { // 既有运算符又有数字，需要判断数字的位数
                 if (first.length() == 3) { // 由 运算符 + 空格 + 1位数字组成
@@ -115,8 +134,9 @@ public class CalculatorVM extends BaseVM {
                 } else {
                     handleFirstNum(first.substring(0, first.length() - 1), Double.parseDouble(first.substring(2, first.length() - 3)));
                 }
-            }
+            }*/
         }
+        adjustNums();
     }
 
     /** 运算符点击处理 */
@@ -144,6 +164,8 @@ public class CalculatorVM extends BaseVM {
                 }
             }
         }
+        setInitState(false);
+        adjustNums();
     }
 
     /**
@@ -155,8 +177,13 @@ public class CalculatorVM extends BaseVM {
         if (firstNum.get().contains("."))
             return;
         else {
+            setInitState(false);
             String val = firstNum.get();
-            handleFirstNum(val + ".", fNum);
+
+            if (!Character.isDigit(val.charAt(0)) && val.length() == 2) {
+                handleFirstNum(val + "0.", fNum);
+            } else
+                handleFirstNum(val + ".", fNum);
         }
     }
 
@@ -215,7 +242,7 @@ public class CalculatorVM extends BaseVM {
             case DIVIDE:
                 if (fNum == 0L) {
                     rNum = 0L;
-                    handleFirstNum("= ∞", rNum);
+                    handleResNum("= ∞", rNum);
                 } else {
                     rNum = sNum / fNum;
                     handleResNum(EQUALS_EMPTY_STR + rNum, rNum);
