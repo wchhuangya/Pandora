@@ -11,17 +11,29 @@ import android.widget.Button;
 
 public class CalculatorVM extends BaseVM {
 
+    /** 用于定义操作符后的空格显示 */
     public static final String EMPTY_STR = " ";
+    /** 用于定义结果数字前的显示 */
     public static final String EQUALS_EMPTY_STR = "= ";
+
+    /** 被操作数 */
     public ObservableField<String> firstNum = new ObservableField<>("0");
+    /** 上一次结果 */
     public ObservableField<String> secondNum = new ObservableField<>("");
+    /** 当前结果 */
     public ObservableField<String> resNum = new ObservableField<>("");
 
+    /** 被操作数的数值 */
     double fNum;
+    /** 上一次结果的数值 */
     double sNum;
+    /** 当前结果的数值 */
     double rNum;
+    /** 标识当前是否为初始状态 */
     boolean initState = true;
+    /** 当前运算符 */
     CalOperator mCurOperator;
+    /** 前一运算符 */
     CalOperator mPreOperator;
 
     /** 运算符枚举 */
@@ -77,7 +89,7 @@ public class CalculatorVM extends BaseVM {
                 handleResNum(String.valueOf(fNum), Double.parseDouble(changedVal));
             } else { // 首位是运算符，计算结果后显示
 
-                if (originalVal.length() == 3 && Double.parseDouble(originalVal.substring(2)) == 0L)
+                if (originalVal.length() == 3 && Double.parseDouble(originalVal.substring(2)) == 0L) // 被操作数是 运算符 + 空格 + 0
                     handleFirstNum(mCurOperator.value + EMPTY_STR, Double.parseDouble(btnVal));
                 else
                     handleFirstNum(originalVal + btnVal, Double.parseDouble((originalVal + btnVal).substring(2)));
@@ -91,50 +103,30 @@ public class CalculatorVM extends BaseVM {
 
     /** 退格键事件 */
     public void del() {
-        boolean firstIsDigit = Character.isDigit(firstNum.get().charAt(0));
-
         String first = firstNum.get();
         if (secondNum.get().length() > 0) { // 正在计算
+
             if (first.length() <= 3) { // firstNum 是运算符，把 secondNum 的值赋值给 firstNum，secondNum 清空
                 handleFirstNum(sNum + "", sNum);
                 handleResNum(EQUALS_EMPTY_STR + secondNum.get(), sNum);
                 handleSecondNum("", 0L);
                 mCurOperator = null;
-            } /*else if (first.length() == 3) { // fistNum 是运算符 + 1 位数字，把数字删除，secondNum 的值给 resNum
-                handleFirstNum(first.substring(0, first.length() - 1), 0L);
-                handleResNum(EQUALS_EMPTY_STR + secondNum, sNum);
-            }*/ else { // firstNum 是运算符 + >=2 位的数字，把最后一个数字删除，重新计算
+            } else { // 把最后一个数字删除，重新计算
                 String changedVal = first.substring(0, first.length() - 1);
                 handleFirstNum(changedVal, Double.parseDouble(changedVal.substring(2)));
                 cal();
             }
         } else { // 没有计算
 
-//            if (firstIsDigit) { // 全部数字
-                if ((first.startsWith("-") && first.length() == 2) || first.length() == 1) { // 只有一位数字
-                    setInitState(true);
-                    handleFirstNum("0", 0L);
-                    handleResNum("", 0L);
-                } else {
-                    String changedFirst = first.substring(0, firstNum.get().length() - 1);
-                    handleFirstNum(changedFirst, Double.parseDouble(changedFirst));
-                    handleResNum(EQUALS_EMPTY_STR + fNum, fNum);
-                }
-
-                /*String changedFristNum = first.length() > 1 ? first.substring(0, firstNum.get().length() - 1) : "0";
-                handleFirstNum(changedFristNum, Double.parseDouble(changedFristNum));
-
-                String changedResNum = firstNum.get().equals("0") ? "" : (EQUALS_EMPTY_STR + firstNum.get());
-                handleResNum(changedResNum, Double.parseDouble(changedFristNum));*/
-            /*} else if (first.length() == 1) { // 只有一个运算符
-                clear();
-            } else { // 既有运算符又有数字，需要判断数字的位数
-                if (first.length() == 3) { // 由 运算符 + 空格 + 1位数字组成
-                    handleFirstNum(first.substring(0, 1), 0L);
-                } else {
-                    handleFirstNum(first.substring(0, first.length() - 1), Double.parseDouble(first.substring(2, first.length() - 3)));
-                }
-            }*/
+            if ((first.startsWith("-") && first.length() == 2) || first.length() == 1) { // 只有一位数字
+                setInitState(true);
+                handleFirstNum("0", 0L);
+                handleResNum("", 0L);
+            } else {
+                String changedFirst = first.substring(0, firstNum.get().length() - 1);
+                handleFirstNum(changedFirst, Double.parseDouble(changedFirst));
+                handleResNum(EQUALS_EMPTY_STR + fNum, fNum);
+            }
         }
         adjustNums();
     }
@@ -142,17 +134,23 @@ public class CalculatorVM extends BaseVM {
     /** 运算符点击处理 */
     public void operatorClick(View view) {
         String btnVal = ((Button) view).getText().toString();
+
+        // 如果当前有运算符，并且运算符后有数字，把当前运算符赋值给前一运算符
         if (mCurOperator != null && firstNum.get().length() >= 3)
             mPreOperator = mCurOperator;
+
         mCurOperator = CalOperator.getOperator(btnVal);
 
         if (secondNum.get().equals("")) { // 1. 没有 secondNum，把 firstNum 赋值给 secondNum，然后把运算符赋值给 firstNum
+
             handleSecondNum(firstNum.get(), Double.parseDouble(firstNum.get()));
             handleFirstNum(mCurOperator.value + EMPTY_STR, 0L);
         } else { // 2. 有 secondNum
             if (firstNum.get().length() == 2) { // 2.1 只有运算符时，只改变运算符显示，其它不变
+
                 firstNum.set(mCurOperator.value + EMPTY_STR);
             } else { // 2.2 既有运算符，又有 firstNum 和 secondNum 时，计算结果
+
                 if (mPreOperator != null) {
                     mPreOperator = null;
 
@@ -225,6 +223,7 @@ public class CalculatorVM extends BaseVM {
         adjustNums();
     }
 
+    /** 计算结果 */
     private void cal() {
         switch (mCurOperator) {
             case ADD:
@@ -252,6 +251,9 @@ public class CalculatorVM extends BaseVM {
         adjustNums();
     }
 
+    /**
+     * 调整结果，主要将最后无用的 .0 去掉
+     */
     private void adjustNums() {
         String ffNum = firstNum.get();
         String ssNum = secondNum.get();
@@ -279,16 +281,19 @@ public class CalculatorVM extends BaseVM {
         mCurOperator = null;
     }
 
+    /** 处理被操作数的显示和值 */
     private void handleFirstNum(String values, double val) {
         firstNum.set(values);
         fNum = val;
     }
 
+    /** 处理上次结果的显示和值 */
     private void handleSecondNum(String values, double val) {
         secondNum.set(values);
         sNum = val;
     }
 
+    /** 处理本次结果的显示和值 */
     private void handleResNum(String values, double val) {
         resNum.set(values);
         rNum = val;
