@@ -34,6 +34,5 @@ public class CalculatorFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mCalVM.reset();
-        mCalVM.unsubscribe();
     }
 }

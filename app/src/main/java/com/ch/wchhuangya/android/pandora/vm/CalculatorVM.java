@@ -86,7 +86,7 @@ public class CalculatorVM extends BaseVM {
             if (firstIsDigit) { // 首位是数字，直接在数字后添加
                 String changedVal = originalVal + btnVal;
                 handleFirstNum(changedVal, Double.parseDouble(changedVal));
-                handleResNum(String.valueOf(fNum), Double.parseDouble(changedVal));
+                handleResNum(EQUALS_EMPTY_STR + String.valueOf(fNum), Double.parseDouble(changedVal));
             } else { // 首位是运算符，计算结果后显示
 
                 if (originalVal.length() == 3 && Double.parseDouble(originalVal.substring(2)) == 0L) // 被操作数是 运算符 + 空格 + 0
@@ -309,11 +309,10 @@ public class CalculatorVM extends BaseVM {
 
     @Override
     public void reset() {
+        // 释放其它资源
+        mContext = null;
 
-    }
-
-    @Override
-    public void unsubscribe() {
-        super.unsubscribe();
+        // 取掉观察者的注册
+        unsubscribe();
     }
 }

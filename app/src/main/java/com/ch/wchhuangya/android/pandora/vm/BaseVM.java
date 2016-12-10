@@ -17,9 +17,9 @@ public abstract class BaseVM {
 
     /** VM 模式中，View 引用的持有 */
     protected AppCompatActivity mActivity;
-
+    /** VM 模式中，View 引用的持有 */
     protected Fragment mFragment;
-
+    /** VM 模式中，上下文引用的持有 */
     protected Context mContext;
     /** 所有用到的观察者 */
     protected List<Subscription> mSubscriptions = new ArrayList<>();
