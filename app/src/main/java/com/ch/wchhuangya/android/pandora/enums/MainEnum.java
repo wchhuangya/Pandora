@@ -28,24 +28,24 @@ public class MainEnum {
 
     /** 新闻分类 */
     public enum NewsTitle {
-        topic(1, "头条"),
-        entertainment(2, "娱乐"),
-        military(3, "军事"),
-        car(4, "汽车"),
-        money(5, "财经"),
-        joke(6, "笑话"),
-        sports(7, "体育"),
-        sciencetechnology(8, "科技");
+        topic("1", "头条"),
+        entertainment("2", "娱乐"),
+        military("3", "军事"),
+        car("4", "汽车"),
+        money("5", "财经"),
+        joke("6", "笑话"),
+        sports("7", "体育"),
+        sciencetechnology("8", "科技");
 
-        private int value;
+        private String value;
         private String name;
 
-        NewsTitle(int value, String name) {
+        NewsTitle(String value, String name) {
             this.value = value;
             this.name = name;
         }
 
-        public static int getValue(NewsTitle newsTitle) {
+        public static String getValue(NewsTitle newsTitle) {
             return newsTitle.value;
         }
 
@@ -57,11 +57,21 @@ public class MainEnum {
          * 根据位置（ViewPager 中的位置）返回相应的标
          */
         public static String getTitleByPos(int pos) {
+            String title = NewsTitle.topic.name;
             for (NewsTitle news : NewsTitle.values()) {
                 if (news.ordinal() == pos)
-                    return news.name;
+                    title = news.name;
             }
-            return NewsTitle.topic.name;
+            return title;
+        }
+
+        public static String getValueByPos(int pos) {
+            String value = NewsTitle.topic.value;
+            for (NewsTitle news : NewsTitle.values()) {
+                if (news.ordinal() == pos)
+                    value = news.value;
+            }
+            return value;
         }
     }
 }

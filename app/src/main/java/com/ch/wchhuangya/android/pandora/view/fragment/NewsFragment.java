@@ -28,7 +28,11 @@ public class NewsFragment extends BaseFragment {
         mBinding.newsFragmentViewpager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                return new SingleNewsFragment();
+                SingleNewsFragment singleNewsFragment = new SingleNewsFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("pos", position);
+                singleNewsFragment.setArguments(bundle);
+                return singleNewsFragment;
             }
 
             @Override

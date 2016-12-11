@@ -5,7 +5,7 @@
         <import type="android.view.View" />
         <variable
             name="vm"
-            type="com.ch.wchhuangya.android.pandora.vm.CommonRecyclerViewVM"/>
+            type="com.ch.wchhuangya.android.pandora.vm.SingleNewsVM"/>
     </data>
 
     <FrameLayout
@@ -14,7 +14,7 @@
         >
 
         <android.support.v7.widget.SearchView
-            android:id="@+id/searchView"
+            android:id="@+id/common_searchView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/colorPrimaryDark"
@@ -25,34 +25,36 @@
             />
 
         <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/common_recyclerview_refreshlayout"
+            android:id="@+id/common_rv_refreshlayout"
             android:layout_marginTop="@{vm.searchShow ? @dimen/search_view_height : @dimen/no_dp}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/common_recyclerview_recyclerview"
+                android:id="@+id/common_recyclerview"
                 android:visibility="@{vm.listShow ? View.VISIBLE : View.GONE}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <me.zhanghai.android.materialprogressbar.MaterialProgressBar
-            android:id="@+id/common_recyclerview_progressbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
+        <fr.castorflex.android.circularprogressbar.CircularProgressBar
+            android:id="@+id/common_pb"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
+            android:indeterminate="true"
             android:visibility="@{vm.pbShow ? View.VISIBLE : View.GONE}"
-            app:mpb_progressStyle="horizontal"/>
-
-        <FrameLayout
-            android:id="@+id/common_recyclerview_tips_fl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            app:cpb_color="#FFee44"
+            app:cpb_colors="@array/my_color"
+            app:cpb_max_sweep_angle="300"
+            app:cpb_min_sweep_angle="10"
+            app:cpb_rotation_speed="1.0"
+            app:cpb_stroke_width="4dp"
+            app:cpb_sweep_speed="1.0"
+            />
 
         <TextView
-            android:id="@+id/common_recyclerview_tips_tv"
+            android:id="@+id/common_rv_tips_tv"
             android:visibility="@{vm.tipsShow ? View.VISIBLE : View.GONE}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

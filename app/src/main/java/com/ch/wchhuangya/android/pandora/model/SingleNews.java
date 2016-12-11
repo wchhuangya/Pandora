@@ -7,7 +7,8 @@ import android.databinding.ObservableField;
  */
 
 public class SingleNews {
-    public ObservableField<String> imgUrl = new ObservableField<>("");
-    public ObservableField<String> newsTitle = new ObservableField<>("");
-    public ObservableField<String> newsSummary = new ObservableField<>("");
+    public ObservableField<String> imgUrl = new ObservableField<>();
+    public ObservableField<String> newsTitle = new ObservableField<>();
+    public ObservableField<String> newsSummary = new ObservableField<>();
+    public ObservableField<String> newsId = new ObservableField<>();
 }

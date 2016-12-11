@@ -27,6 +27,8 @@ public class ExampleUnitTest {
         }, throwable -> {
             System.out.println("出问题啦：" + throwable.getMessage());
             assertEquals(4, 2 + 1);
+        }, () -> {
+
         });
 
     }

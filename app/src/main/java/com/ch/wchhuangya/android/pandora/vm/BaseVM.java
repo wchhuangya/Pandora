@@ -1,6 +1,7 @@
 package com.ch.wchhuangya.android.pandora.vm;
 
 import android.content.Context;
+import android.databinding.ObservableBoolean;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
@@ -14,6 +15,11 @@ import rx.Subscription;
  */
 
 public abstract class BaseVM {
+
+    public ObservableBoolean searchShow = new ObservableBoolean(false);
+    public ObservableBoolean listShow = new ObservableBoolean(false);
+    public ObservableBoolean pbShow = new ObservableBoolean(true);
+    public ObservableBoolean tipsShow = new ObservableBoolean(false);
 
     /** VM 模式中，View 引用的持有 */
     protected AppCompatActivity mActivity;

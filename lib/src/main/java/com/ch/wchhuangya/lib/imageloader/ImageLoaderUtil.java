@@ -18,6 +18,7 @@ public class ImageLoaderUtil {
     }
 
     public static DisplayImageOptions squareOptions = new DisplayImageOptions.Builder()
+            .cacheOnDisk(true)
             .showImageForEmptyUri(R.mipmap.no_img)
             .showImageOnFail(R.mipmap.pic_fail)
             .showImageOnLoading(R.mipmap.pic_default)

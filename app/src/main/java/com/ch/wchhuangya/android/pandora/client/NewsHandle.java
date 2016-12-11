@@ -2,10 +2,13 @@ package com.ch.wchhuangya.android.pandora.client;
 
 import com.ch.wchhuangya.android.pandora.model.NewsDetail;
 import com.ch.wchhuangya.android.pandora.model.NewsList;
+import com.ch.wchhuangya.lib.interfaces.ResponseComplete;
 import com.ch.wchhuangya.lib.interfaces.ResponseError;
 import com.ch.wchhuangya.lib.interfaces.ResponseSuccess;
 import com.ch.wchhuangya.lib.retrofit.RetrofitUtil;
 import com.ch.wchhuangya.lib.rxandroid.RxandroidUtil;
+
+import rx.Subscription;
 
 /**
  * 新闻接口的处理类
@@ -15,6 +18,8 @@ import com.ch.wchhuangya.lib.rxandroid.RxandroidUtil;
 public class NewsHandle {
 
     private static NewsService newsService = RetrofitUtil.generator(NewsService.class);
+    public static final int PAGE_SIZE = 20;
+    public static int PAGE = 1;
 
     /**
      * 获取新闻列表
@@ -22,10 +27,11 @@ public class NewsHandle {
      * @param page 当前页（从 1 开始）
      * @param pageSize 每页显示数目
      */
-    public static void getNewsList(String tableNum, int page, int pageSize, ResponseSuccess<NewsList> success, ResponseError error) {
-        newsService.getNewsList(tableNum, page, pageSize)
-                    //.compose(RxandroidUtil.applySchedulers())
-                    .subscribe(success::onSuccess, error::onError);
+    public static Subscription getNewsList(String tableNum, int page, int pageSize, ResponseSuccess<NewsList> success, ResponseError error,
+                                           ResponseComplete complete) {
+        return newsService.getNewsList(tableNum, page, pageSize)
+                    .compose(RxandroidUtil.applySchedulers())
+                    .subscribe(success::onSuccess, error::onError, complete::onComplete);
     }
 
     /**
@@ -33,9 +39,10 @@ public class NewsHandle {
      * @param news_id 新闻 id
      * @param tableNum 板块代码：1 => 头条，2 => 娱乐，3 => 军事，4 => 汽车，5 => 财经，6 => 笑话，7 => 体育，8 => 科技
      */
-    public static void getNewsDetail(String news_id, int tableNum, ResponseSuccess<NewsDetail> success, ResponseError error) {
+    public static void getNewsDetail(String news_id, int tableNum, ResponseSuccess<NewsDetail> success, ResponseError error,
+                                     ResponseComplete complete) {
         newsService.getNewsDetail(news_id, tableNum)
                     .compose(RxandroidUtil.applySchedulers())
-                    .subscribe(success::onSuccess, error::onError);
+                    .subscribe(success::onSuccess, error::onError, complete::onComplete);
     }
 }

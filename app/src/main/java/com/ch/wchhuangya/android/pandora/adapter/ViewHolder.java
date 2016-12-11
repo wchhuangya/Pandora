@@ -11,10 +11,11 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     private ViewDataBinding mBinding;
 
-    public ViewHolder(ViewDataBinding binding) {
+    public ViewHolder(ViewDataBinding binding, Object object) {
         super(binding.getRoot());
 
         mBinding = binding;
+        mBinding.getRoot().setTag(object);
     }
 
     public ViewDataBinding getBinding() {
