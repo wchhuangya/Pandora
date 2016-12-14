@@ -45,17 +45,7 @@ public class MainEnum {
             this.name = name;
         }
 
-        public static String getValue(NewsTitle newsTitle) {
-            return newsTitle.value;
-        }
-
-        public static String getName(NewsTitle newsTitle) {
-            return newsTitle.name;
-        }
-
-        /**
-         * 根据位置（ViewPager 中的位置）返回相应的标
-         */
+        /** 根据位置（ViewPager 中的位置）返回相应的标题 */
         public static String getTitleByPos(int pos) {
             String title = NewsTitle.topic.name;
             for (NewsTitle news : NewsTitle.values()) {
@@ -65,6 +55,7 @@ public class MainEnum {
             return title;
         }
 
+        /** 根据位置（ViewPager 中的位置）返回相应的板块代码 */
         public static String getValueByPos(int pos) {
             String value = NewsTitle.topic.value;
             for (NewsTitle news : NewsTitle.values()) {

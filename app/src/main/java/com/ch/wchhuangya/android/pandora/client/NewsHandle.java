@@ -39,9 +39,9 @@ public class NewsHandle {
      * @param news_id 新闻 id
      * @param tableNum 板块代码：1 => 头条，2 => 娱乐，3 => 军事，4 => 汽车，5 => 财经，6 => 笑话，7 => 体育，8 => 科技
      */
-    public static void getNewsDetail(String news_id, int tableNum, ResponseSuccess<NewsDetail> success, ResponseError error,
+    public static Subscription getNewsDetail(String news_id, int tableNum, ResponseSuccess<NewsDetail> success, ResponseError error,
                                      ResponseComplete complete) {
-        newsService.getNewsDetail(news_id, tableNum)
+        return newsService.getNewsDetail(news_id, tableNum)
                     .compose(RxandroidUtil.applySchedulers())
                     .subscribe(success::onSuccess, error::onError, complete::onComplete);
     }

@@ -36,7 +36,7 @@ public class SingleNewsFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.common_recyclerview, container, false);
-        mCrvVM = new SingleNewsVM();
+        mCrvVM = new SingleNewsVM(getContext());
         mBinding.setVm(mCrvVM);
 
         initRecyclerView();
@@ -52,6 +52,7 @@ public class SingleNewsFragment extends BaseFragment {
         mAdapter = new SingleNewsAdapter(getContext());
         mBinding.commonRecyclerview.setAdapter(mAdapter);
         mCrvVM.loadData(pos, mAdapter, 0, mBinding.commonRvRefreshlayout);
+        mBinding.commonRecyclerview.addOnItemTouchListener(mCrvVM.onItemTouchClick(mBinding.commonRecyclerview, pos));
     }
 
     /** 初始化 SwipeRefreshLayout */
