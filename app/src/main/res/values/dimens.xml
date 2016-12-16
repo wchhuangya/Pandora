@@ -5,4 +5,6 @@
 
     <dimen name="search_view_height">60dp</dimen>
     <dimen name="no_dp">0dp</dimen>
+
+    <dimen name="cv_margin">0dp</dimen>
 </resources>

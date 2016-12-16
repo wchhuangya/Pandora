@@ -11,7 +11,7 @@
 
         <variable
             name="detail"
-            type="com.ch.wchhuangya.android.pandora.vm.NewsDetailVM"/>
+            type="com.ch.wchhuangya.android.pandora.vm.news.NewsDetailVM"/>
     </data>
 
     <LinearLayout
@@ -95,7 +95,7 @@
                     <ImageView
                         android:id="@+id/news_detail_iv1"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/news_detail_wv"
                         android:layout_margin="15dp"
                         android:scaleType="fitXY"
@@ -106,7 +106,7 @@
                     <ImageView
                         android:id="@+id/news_detail_iv2"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
+                        android:layout_height="wrap_content"
                         android:layout_below="@+id/news_detail_iv1"
                         android:layout_margin="15dp"
                         android:scaleType="fitXY"

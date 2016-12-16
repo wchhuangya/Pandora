@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.activity.NewsDetailActivity" android:screenOrientation="portrait" />
+        <activity android:name=".view.activity.news.NewsDetailActivity" android:screenOrientation="portrait" />
 
     </application>
 

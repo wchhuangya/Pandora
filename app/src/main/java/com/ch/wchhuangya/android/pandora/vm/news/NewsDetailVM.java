@@ -1,16 +1,16 @@
-package com.ch.wchhuangya.android.pandora.vm;
+package com.ch.wchhuangya.android.pandora.vm.news;
 
 import android.content.Intent;
 import android.databinding.ObservableArrayList;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.databinding.ObservableLong;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.webkit.WebView;
 
 import com.ch.wchhuangya.android.pandora.client.NewsHandle;
 import com.ch.wchhuangya.android.pandora.model.NewsDetail;
+import com.ch.wchhuangya.android.pandora.vm.BaseVM;
 import com.ch.wchhuangya.lib.util.Constant;
 import com.ch.wchhuangya.lib.util.StringUtil;
 
@@ -45,9 +45,6 @@ public class NewsDetailVM extends BaseVM {
         } else {
             return false;
         }
-    }
-
-    public void initToolbar(Toolbar toolbar) {
     }
 
     public void loadData(WebView webView) {

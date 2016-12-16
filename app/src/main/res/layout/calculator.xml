@@ -5,7 +5,7 @@
     <data>
         <variable
             name="cal"
-            type="com.ch.wchhuangya.android.pandora.vm.CalculatorVM"/>
+            type="com.ch.wchhuangya.android.pandora.vm.calculator.CalculatorVM"/>
     </data>
 
     <LinearLayout

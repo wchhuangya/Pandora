@@ -23,6 +23,7 @@
             android:orientation="vertical"
             bind:cardCornerRadius="5dp"
             bind:cardElevation="5dp"
+            android:layout_margin="@dimen/cv_margin"
             >
 
             <com.balysv.materialripple.MaterialRippleLayout

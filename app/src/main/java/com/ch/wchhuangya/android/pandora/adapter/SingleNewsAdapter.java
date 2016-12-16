@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ch.wchhuangya.android.pandora.R;
+import com.ch.wchhuangya.android.pandora.databinding.CommonListFooterBinding;
 import com.ch.wchhuangya.android.pandora.databinding.SingleNewsItemBinding;
+import com.ch.wchhuangya.android.pandora.model.CommonListFooter;
 import com.ch.wchhuangya.android.pandora.model.NewsList;
 import com.ch.wchhuangya.android.pandora.model.SingleNews;
 
@@ -20,8 +22,27 @@ import java.util.List;
 
 public class SingleNewsAdapter extends RecyclerView.Adapter<ViewHolder> {
 
+    public static final int ITEM_VIEW_TYPE_FOOTER = 2;
+    public static final int ITEM_VIEW_TYPE_LIST_ITEM = 1;
     private List<NewsList.DataBean> mData = new ArrayList<>();
     private Context mContext;
+    private boolean loadMore = true;
+
+    public boolean isLoadMore() {
+        return loadMore;
+    }
+
+    public void setLoadMore(boolean loadMore) {
+        this.loadMore = loadMore;
+    }
+
+    public List<NewsList.DataBean> getData() {
+        return mData;
+    }
+
+    public void setData(List<NewsList.DataBean> data) {
+        mData = data;
+    }
 
     public SingleNewsAdapter(Context context) {
         mContext = context;
@@ -39,25 +60,45 @@ public class SingleNewsAdapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        if (mData.size() > 0 && loadMore && position == mData.size())
+            return ITEM_VIEW_TYPE_FOOTER;
+        else
+            return ITEM_VIEW_TYPE_LIST_ITEM;
+    }
+
+    @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        SingleNewsItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.single_news_item, parent, false);
-        SingleNews singleNews = new SingleNews();
-        binding.setSingleNews(singleNews);
-        return new ViewHolder(binding, singleNews);
+        if (viewType == ITEM_VIEW_TYPE_FOOTER) {
+            CommonListFooterBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.common_list_footer, parent, false);
+            CommonListFooter mFooter = new CommonListFooter();
+            binding.setFooter(mFooter);
+            binding.footerBall.setPaintMode(0);
+            return new ViewHolder(binding, mFooter);
+        } else {
+            SingleNewsItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.single_news_item, parent, false);
+            SingleNews singleNews = new SingleNews();
+            binding.setSingleNews(singleNews);
+            return new ViewHolder(binding, singleNews);
+        }
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        SingleNews singleNews = (SingleNews) holder.getBinding().getRoot().getTag();
-        NewsList.DataBean dataBean = mData.get(position);
-        singleNews.imgUrl.set(dataBean.getTop_image());
-        singleNews.newsTitle.set(dataBean.getTitle());
-        singleNews.newsSummary.set(dataBean.getDigest());
-        singleNews.newsId.set(dataBean.getNews_id());
+        if (mData.size() > 0 && isLoadMore() && position == mData.size()) {
+//            mFooter = (CommonListFooter) holder.getBinding().getRoot().getTag();
+        } else {
+            SingleNews singleNews = (SingleNews) holder.getBinding().getRoot().getTag();
+            NewsList.DataBean dataBean = mData.get(position);
+            singleNews.imgUrl.set(dataBean.getTop_image());
+            singleNews.newsTitle.set(dataBean.getTitle());
+            singleNews.newsSummary.set(dataBean.getDigest());
+            singleNews.newsId.set(dataBean.getNews_id());
+        }
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return loadMore && mData.size() > 0 ? mData.size() + 1 : mData.size();
     }
 }

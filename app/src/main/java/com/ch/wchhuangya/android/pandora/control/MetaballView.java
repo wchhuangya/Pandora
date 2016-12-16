@@ -20,11 +20,21 @@ import java.util.ArrayList;
 public class MetaballView extends View {
 
     private Paint paint = new Paint();
+
+    // 实在不清楚
     private float handle_len_rate = 2f;
-    private float radius = 30;
+
+    // 官方说不上，但是表象是：数值越大，球越大
+    private float radius = 20;
+
+    // 球的数量（所有球数量）
     private final int ITEM_COUNT = 6;
-    private final int ITEM_DIVIDER = 30;
-    private final float SCALE_RATE = 0.1f;
+
+    // 两球之间的间距
+    private final int ITEM_DIVIDER = 35;
+
+    // 小球放大的倍数
+    private final float SCALE_RATE = 0.3f;
     private float maxLength;
     private ArrayList<Circle> circlePaths = new ArrayList<>();
     private float mInterpolatedTime;
@@ -232,7 +242,7 @@ public class MetaballView extends View {
 
 
         for (int i = 1, l = circlePaths.size(); i < l; i++) {
-            metaball(canvas, i, 0, 0.6f, handle_len_rate, radius * 4f);
+            metaball(canvas, i, 0, 0.4f, handle_len_rate, radius * 4f);
         }
     }
 

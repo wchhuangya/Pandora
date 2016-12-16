@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.CalculatorBinding;
-import com.ch.wchhuangya.android.pandora.vm.CalculatorVM;
+import com.ch.wchhuangya.android.pandora.vm.calculator.CalculatorVM;
 
 /**
  * Created by wchya on 2016-12-07 16:17

@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.view.fragment;
+package com.ch.wchhuangya.android.pandora.view.fragment.news;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.NewsFragmentBinding;
 import com.ch.wchhuangya.android.pandora.enums.MainEnum;
+import com.ch.wchhuangya.android.pandora.view.fragment.BaseFragment;
 
 /**
  * Created by wchya on 2016-11-28 09:16

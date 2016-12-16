@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.view.activity;
+package com.ch.wchhuangya.android.pandora.view.activity.news;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -8,7 +8,8 @@ import android.widget.Toast;
 
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.NewsDetailBinding;
-import com.ch.wchhuangya.android.pandora.vm.NewsDetailVM;
+import com.ch.wchhuangya.android.pandora.view.activity.BaseActivity;
+import com.ch.wchhuangya.android.pandora.vm.news.NewsDetailVM;
 
 /**
  * Created by wchya on 2016-12-12 11:26

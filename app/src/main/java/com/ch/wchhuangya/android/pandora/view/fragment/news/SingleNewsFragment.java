@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.view.fragment;
+package com.ch.wchhuangya.android.pandora.view.fragment.news;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -11,7 +11,8 @@ import android.view.ViewGroup;
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.adapter.SingleNewsAdapter;
 import com.ch.wchhuangya.android.pandora.databinding.CommonRecyclerviewBinding;
-import com.ch.wchhuangya.android.pandora.vm.SingleNewsVM;
+import com.ch.wchhuangya.android.pandora.view.fragment.BaseFragment;
+import com.ch.wchhuangya.android.pandora.vm.news.SingleNewsVM;
 
 /**
  * Created by wchya on 2016-11-28 11:10
@@ -52,7 +53,9 @@ public class SingleNewsFragment extends BaseFragment {
         mAdapter = new SingleNewsAdapter(getContext());
         mBinding.commonRecyclerview.setAdapter(mAdapter);
         mCrvVM.loadData(pos, mAdapter, 0, mBinding.commonRvRefreshlayout);
-        mBinding.commonRecyclerview.addOnItemTouchListener(mCrvVM.onItemTouchClick(mBinding.commonRecyclerview, pos));
+        mBinding.commonRecyclerview.addOnItemTouchListener(mCrvVM.onItemTouchClick(mBinding.commonRecyclerview, pos,
+                mAdapter, mBinding.commonRvRefreshlayout));
+        mBinding.commonRecyclerview.addOnScrollListener(mCrvVM.onScrollListener(pos, mAdapter, mBinding.commonRvRefreshlayout));
     }
 
     /** 初始化 SwipeRefreshLayout */
@@ -66,5 +69,12 @@ public class SingleNewsFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
         mCrvVM.reset();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        if (mCrvVM != null) {
+            outState.putInt("page", mCrvVM.getPage());
+        }
     }
 }

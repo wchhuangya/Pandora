@@ -19,7 +19,6 @@ public class NewsHandle {
 
     private static NewsService newsService = RetrofitUtil.generator(NewsService.class);
     public static final int PAGE_SIZE = 20;
-    public static int PAGE = 1;
 
     /**
      * 获取新闻列表

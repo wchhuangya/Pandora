@@ -10,7 +10,7 @@ import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.MainBinding;
 import com.ch.wchhuangya.android.pandora.enums.MainEnum;
 import com.ch.wchhuangya.android.pandora.view.activity.calculator.CalculatorFragment;
-import com.ch.wchhuangya.android.pandora.view.fragment.NewsFragment;
+import com.ch.wchhuangya.android.pandora.view.fragment.news.NewsFragment;
 import com.ch.wchhuangya.android.pandora.vm.MainVM;
 
 public class MainActivity extends BaseActivity {
