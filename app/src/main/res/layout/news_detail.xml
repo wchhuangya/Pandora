@@ -28,112 +28,112 @@
             app:titleTextColor="@color/textColorPrimary"
             />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="180dp"
+            android:gravity="center_horizontal"
+            android:visibility="@{detail.pbShow ? View.VISIBLE : View.GONE}"
+            >
+            <fr.castorflex.android.circularprogressbar.CircularProgressBar
+                android:id="@+id/common_pb"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:indeterminate="true"
+                app:cpb_color="#FFee44"
+                app:cpb_colors="@array/my_color"
+                app:cpb_max_sweep_angle="300"
+                app:cpb_min_sweep_angle="10"
+                app:cpb_rotation_speed="1.0"
+                app:cpb_stroke_width="4dp"
+                app:cpb_sweep_speed="1.0"
+                />
+        </LinearLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/white"
             >
 
-            <FrameLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <RelativeLayout
+                <TextView
+                    android:id="@+id/news_detail_title_tv"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/news_detail_title_tv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="20dp"
-                        android:text="@{detail.newsTitle}"
-                        android:textColor="#000"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        tools:text="面对“总统级”危机公关，朴槿惠、川普和波音是怎么做的？"
-                        />
-
-                    <TextView
-                        android:id="@+id/news_detail_source_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/news_detail_title_tv"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="10dp"
-                        android:text="@{detail.source}"
-                        android:textColor="#aaa"
-                        android:textSize="14sp"
-                        tools:text="钛媒体"
-                        />
-
-                    <TextView
-                        android:id="@+id/news_detail_date_tv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/news_detail_title_tv"
-                        android:layout_toRightOf="@+id/news_detail_source_tv"
-                        android:text="@{detail.date}"
-                        android:textColor="#aaa"
-                        android:textSize="14sp"
-                        tools:text="2016-01-05 12:13:14"
-                        />
-
-                    <WebView
-                        android:id="@+id/news_detail_wv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/news_detail_date_tv"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:paddingTop="-150dp"
-                        />
-
-                    <ImageView
-                        android:id="@+id/news_detail_iv1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/news_detail_wv"
-                        android:layout_margin="15dp"
-                        android:scaleType="fitXY"
-                        android:visibility="@{detail.type == 6 &amp;&amp; detail.imgUrls.size() > 0 ? View.VISIBLE : View.GONE}"
-                        app:squareImg="@{detail.imgUrls[0]}"
-                        />
-
-                    <ImageView
-                        android:id="@+id/news_detail_iv2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/news_detail_iv1"
-                        android:layout_margin="15dp"
-                        android:scaleType="fitXY"
-                        android:visibility="@{detail.type == 6 &amp;&amp; detail.imgUrls.size() > 1 ? View.VISIBLE : View.GONE}"
-                        app:squareImg="@{detail.imgUrls[1]}"
-                        />
-
-                </RelativeLayout>
-
-
-                <fr.castorflex.android.circularprogressbar.CircularProgressBar
-                    android:id="@+id/common_pb"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="110dp"
-                    android:indeterminate="true"
-                    android:visibility="@{detail.pbShow ? View.VISIBLE : View.GONE}"
-                    app:cpb_color="#FFee44"
-                    app:cpb_colors="@array/my_color"
-                    app:cpb_max_sweep_angle="300"
-                    app:cpb_min_sweep_angle="10"
-                    app:cpb_rotation_speed="1.0"
-                    app:cpb_stroke_width="4dp"
-                    app:cpb_sweep_speed="1.0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="@{detail.newsTitle}"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:text="面对“总统级”危机公关，朴槿惠、川普和波音是怎么做的？"
                     />
-            </FrameLayout>
+
+                <TextView
+                    android:id="@+id/news_detail_source_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/news_detail_title_tv"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@{detail.source}"
+                    android:textColor="#aaa"
+                    android:textSize="14sp"
+                    tools:text="钛媒体"
+                    />
+
+                <TextView
+                    android:id="@+id/news_detail_date_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/news_detail_title_tv"
+                    android:layout_toRightOf="@+id/news_detail_source_tv"
+                    android:text="@{detail.date}"
+                    android:textColor="#aaa"
+                    android:textSize="14sp"
+                    tools:text="2016-01-05 12:13:14"
+                    />
+
+                <WebView
+                    android:id="@+id/news_detail_wv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/news_detail_date_tv"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingTop="-150dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/news_detail_iv1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/news_detail_wv"
+                    android:layout_margin="15dp"
+                    android:scaleType="fitXY"
+                    android:visibility="@{detail.type == 6 &amp;&amp; detail.imgUrls.size() > 0 ? View.VISIBLE : View.GONE}"
+                    app:squareImg="@{detail.imgUrls[0]}"
+                    />
+
+                <ImageView
+                    android:id="@+id/news_detail_iv2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/news_detail_iv1"
+                    android:layout_margin="15dp"
+                    android:scaleType="fitXY"
+                    android:visibility="@{detail.type == 6 &amp;&amp; detail.imgUrls.size() > 1 ? View.VISIBLE : View.GONE}"
+                    app:squareImg="@{detail.imgUrls[1]}"
+                    />
+
+            </RelativeLayout>
+
         </ScrollView>
     </LinearLayout>
 </layout>
