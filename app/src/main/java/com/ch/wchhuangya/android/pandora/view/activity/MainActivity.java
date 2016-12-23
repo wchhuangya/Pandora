@@ -1,19 +1,23 @@
 package com.ch.wchhuangya.android.pandora.view.activity;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.view.Gravity;
+import android.view.MenuItem;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.MainBinding;
 import com.ch.wchhuangya.android.pandora.enums.MainEnum;
-import com.ch.wchhuangya.android.pandora.view.activity.calculator.CalculatorFragment;
+import com.ch.wchhuangya.android.pandora.view.activity.calculator.CalculatorActivity;
+import com.ch.wchhuangya.android.pandora.view.fragment.calculator.CalculatorFragment;
 import com.ch.wchhuangya.android.pandora.view.fragment.news.NewsFragment;
 import com.ch.wchhuangya.android.pandora.vm.MainVM;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private MainVM mMainVM;
     private MainBinding mBinding;
@@ -31,8 +35,10 @@ public class MainActivity extends BaseActivity {
         // 设置 BottomNavigationBar
         initBottomNavBar();
 
+        initNavigationView();
+
         // 设置第一屏显示的内容
-        mMainVM.setMainContent(R.id.main_frame, new NewsFragment());
+        setNewsToContents();
     }
 
     private void initToolbar() {
@@ -49,6 +55,14 @@ public class MainActivity extends BaseActivity {
                 .addItem(new BottomNavigationItem(R.mipmap.bottom_bar_im, MainEnum.BottomBarType.getName(MainEnum.BottomBarType.im)))
                 .initialise();
         mBinding.bottomNavBar.setTabSelectedListener(mSelectedListener);
+    }
+
+    private void initNavigationView() {
+        mBinding.leftNavView.setNavigationItemSelectedListener(this);
+    }
+
+    private void setNewsToContents() {
+        mMainVM.setMainContent(R.id.main_frame, new NewsFragment());
     }
 
     @Override
@@ -87,4 +101,20 @@ public class MainActivity extends BaseActivity {
 
         }
     };
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                setNewsToContents();
+                break;
+            case R.id.nav_calculator:
+                Intent intent = new Intent(MainActivity.this, CalculatorActivity.class);
+                intent.putExtra("ss", "ss");
+                startActivity(intent);
+                break;
+        }
+        mBinding.mainDrawer.closeDrawer(Gravity.LEFT);
+        return true;
+    }
 }

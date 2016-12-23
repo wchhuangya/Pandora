@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -12,6 +13,8 @@
         android:id="@+id/main_drawer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start"
         >
 
         <LinearLayout
@@ -45,31 +48,14 @@
                 app:bnbMode="mode_fixed"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="300dp"
+        <android.support.design.widget.NavigationView
+            android:id="@+id/left_nav_view"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="@mipmap/drawer_bg"
-            android:orientation="vertical"
-            >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                >
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:src="@mipmap/head_male"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="30dp"
-                    app:riv_corner_radius="30dip"
-                    app:riv_border_width="0dip"
-                    app:riv_border_color="#fff"
-                    app:riv_mutate_background="true"
-                    app:riv_tile_mode="clamp"
-                    app:riv_oval="true" />
-            </RelativeLayout>
-        </LinearLayout>
+            android:fitsSystemWindows="true"
+            app:headerLayout="@layout/drawer_header"
+            app:menu="@menu/drawer_menu"
+            />
     </android.support.v4.widget.DrawerLayout>
 </layout>

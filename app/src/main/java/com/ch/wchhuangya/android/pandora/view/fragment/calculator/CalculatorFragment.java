@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.view.activity.calculator;
+package com.ch.wchhuangya.android.pandora.view.fragment.calculator;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -26,7 +26,8 @@ public class CalculatorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.calculator, container, false);
         mCalVM = new CalculatorVM(getContext());
-        mBinding.setCal(mCalVM);
+        mCalVM.barTitle.set("计算器");
+        mBinding.setVm(mCalVM);
         return mBinding.getRoot();
     }
 

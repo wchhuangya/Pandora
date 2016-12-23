@@ -2,6 +2,7 @@ package com.ch.wchhuangya.android.pandora.vm;
 
 import android.content.Context;
 import android.databinding.ObservableBoolean;
+import android.databinding.ObservableField;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 
@@ -20,6 +21,7 @@ public abstract class BaseVM {
     public ObservableBoolean listShow = new ObservableBoolean(false);
     public ObservableBoolean pbShow = new ObservableBoolean(true);
     public ObservableBoolean tipsShow = new ObservableBoolean(false);
+    public ObservableField<String> barTitle = new ObservableField<>("");
 
     /** VM 模式中，View 引用的持有 */
     protected AppCompatActivity mActivity;

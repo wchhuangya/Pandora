@@ -19,8 +19,11 @@
 
         <activity android:name=".view.activity.news.NewsDetailActivity" android:screenOrientation="portrait" />
 
+        <activity android:name=".view.activity.calculator.CalculatorActivity" android:screenOrientation="portrait" />
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 </manifest>
