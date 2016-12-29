@@ -3,6 +3,7 @@
     <declare-styleable name="ImageView">
         <!-- 为 ImageView 设置方形图片-->
         <attr name="squareImg" format="string"/>
+        <attr name="resImg" format="integer" />
     </declare-styleable>
 
     <declare-styleable name="WebView">

@@ -12,6 +12,7 @@ import com.ch.wchhuangya.android.pandora.databinding.SingleNewsItemBinding;
 import com.ch.wchhuangya.android.pandora.model.CommonListFooter;
 import com.ch.wchhuangya.android.pandora.model.NewsList;
 import com.ch.wchhuangya.android.pandora.model.SingleNews;
+import com.ch.wchhuangya.lib.recyclerview.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;

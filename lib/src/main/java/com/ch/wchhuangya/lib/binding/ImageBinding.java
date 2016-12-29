@@ -14,4 +14,9 @@ public class ImageBinding {
     public static void setSquareImg(ImageView imageView, String url) {
         ImageLoaderUtil.displaySquareImage(imageView, url);
     }
+
+    @BindingAdapter({"resImg"})
+    public static void setResImg(ImageView imageView, String resImg) {
+        imageView.setBackgroundResource(Integer.parseInt(resImg));
+    }
 }

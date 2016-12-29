@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="vm"
+            type="com.ch.wchhuangya.android.pandora.vm.BaseVM"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/common_grid_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+            <!--android:visibility="@{vm.tipsShow ? View.VISIBLE : View.GONE}"-->
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@mipmap/function"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="80dp"
+                android:layout_marginTop="30dp"
+                android:text="暂无功能，敬请期待 ..."
+                android:textColor="#212121"
+                android:textSize="22sp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -3,6 +3,7 @@ package com.ch.wchhuangya.android.pandora.view.activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -13,7 +14,7 @@ import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.MainBinding;
 import com.ch.wchhuangya.android.pandora.enums.MainEnum;
 import com.ch.wchhuangya.android.pandora.view.activity.calculator.CalculatorActivity;
-import com.ch.wchhuangya.android.pandora.view.fragment.calculator.CalculatorFragment;
+import com.ch.wchhuangya.android.pandora.view.fragment.CommonGridFragment;
 import com.ch.wchhuangya.android.pandora.view.fragment.news.NewsFragment;
 import com.ch.wchhuangya.android.pandora.vm.MainVM;
 
@@ -21,6 +22,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
     private MainVM mMainVM;
     private MainBinding mBinding;
+
+    public static final String FRAGMENT_TAG = "FRAGMENT_TAG";
+    public static final String TAG_LIFE = "TAG_LIFE";
+    public static final String TAG_TOOLS = "TAG_TOOLS";
+    public static final String TAG_STUDY = "TAG_STUDY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,19 +82,35 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public BottomNavigationBar.OnTabSelectedListener mSelectedListener = new BottomNavigationBar.OnTabSelectedListener() {
         @Override
         public void onTabSelected(int position) {
+            CommonGridFragment commonGridFragment = null;
+
             if (position == MainEnum.BottomBarType.news.ordinal()) { // 新闻
                 mMainVM.toolbarTitle.set("新闻");
                 mMainVM.setMainContent(R.id.main_frame, new NewsFragment());
             } else if (position == MainEnum.BottomBarType.life.ordinal()) { // 生活
                 mMainVM.toolbarTitle.set("生活");
+                commonGridFragment = getCommonGridFragment(commonGridFragment, MainActivity.TAG_LIFE);
             } else if (position == MainEnum.BottomBarType.tool.ordinal()) { // 工具
                 mMainVM.toolbarTitle.set("工具");
-                mMainVM.setMainContent(R.id.main_frame, new CalculatorFragment());
+                commonGridFragment = getCommonGridFragment(commonGridFragment, MainActivity.TAG_TOOLS);
             } else if (position == MainEnum.BottomBarType.study.ordinal()) { // 学习
                 mMainVM.toolbarTitle.set("学习");
+                commonGridFragment = getCommonGridFragment(commonGridFragment, MainActivity.TAG_STUDY);
             } else if (position == MainEnum.BottomBarType.im.ordinal()) { // IM
                 mMainVM.toolbarTitle.set("IM");
             }
+
+            if (commonGridFragment != null)
+                mMainVM.setMainContent(R.id.main_frame, commonGridFragment);
+        }
+
+        @NonNull
+        private CommonGridFragment getCommonGridFragment(CommonGridFragment fragment, String title) {
+            fragment = new CommonGridFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString(FRAGMENT_TAG, title);
+            fragment.setArguments(bundle);
+            return fragment;
         }
 
         @Override
@@ -110,7 +132,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
             case R.id.nav_calculator:
                 Intent intent = new Intent(MainActivity.this, CalculatorActivity.class);
-                intent.putExtra("ss", "ss");
+                intent.putExtra("s", "ss");
                 startActivity(intent);
                 break;
         }

@@ -24,10 +24,6 @@ public class MainVM extends BaseVM {
     @Override
     public void reset() {
         mActivity = null;
-    }
-
-    @Override
-    public void unsubscribe() {
-        super.unsubscribe();
+        unsubscribe();
     }
 }

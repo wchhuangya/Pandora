@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.adapter;
+package com.ch.wchhuangya.lib.recyclerview;
 
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;
