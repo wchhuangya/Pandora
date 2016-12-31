@@ -17,8 +17,9 @@ import rx.Subscription;
 
 public class NewsHandle {
 
-    private static NewsService newsService = RetrofitUtil.generator(NewsService.class);
+    private static NewsService newsService;
     public static final int PAGE_SIZE = 20;
+    private static String url = "http://api.dagoogle.cn/";
 
     /**
      * 获取新闻列表
@@ -28,6 +29,7 @@ public class NewsHandle {
      */
     public static Subscription getNewsList(String tableNum, int page, int pageSize, ResponseSuccess<NewsList> success, ResponseError error,
                                            ResponseComplete complete) {
+        getNewService();
         return newsService.getNewsList(tableNum, page, pageSize)
                     .compose(RxandroidUtil.applySchedulers())
                     .subscribe(success::onSuccess, error::onError, complete::onComplete);
@@ -40,8 +42,14 @@ public class NewsHandle {
      */
     public static Subscription getNewsDetail(String news_id, int tableNum, ResponseSuccess<NewsDetail> success, ResponseError error,
                                      ResponseComplete complete) {
+        getNewService();
         return newsService.getNewsDetail(news_id, tableNum)
                     .compose(RxandroidUtil.applySchedulers())
                     .subscribe(success::onSuccess, error::onError, complete::onComplete);
+    }
+
+    private static void getNewService() {
+        RetrofitUtil.builder = RetrofitUtil.builder.baseUrl(url);
+        newsService = RetrofitUtil.generator(NewsService.class);
     }
 }
