@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.view.fragment.CommonGridFragment;
@@ -42,9 +43,14 @@ public class CommonGridAdapter extends RecyclerView.Adapter<CommonGridAdapter.Vi
         holder.mIv.setTag(position);
         holder.mIv.setOnClickListener(view -> {
             int p = Integer.parseInt(view.getTag().toString());
-            Intent intent = new Intent(mContext, (Class<?>) mData.get(p).get(CommonGridFragment.APP_URL));
-            intent.putExtra("s", "s");
-            mContext.startActivity(intent);
+            Object appUrl = mData.get(p).get(CommonGridFragment.APP_URL);
+            if (appUrl != null) {
+                Intent intent = new Intent(mContext, (Class<?>) appUrl);
+                intent.putExtra("s", "s");
+                mContext.startActivity(intent);
+            } else {
+                Toast.makeText(mContext, "功能建设中，敬请期待...", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

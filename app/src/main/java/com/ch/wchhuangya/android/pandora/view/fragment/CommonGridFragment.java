@@ -12,7 +12,8 @@ import android.widget.LinearLayout;
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.adapter.CommonGridAdapter;
 import com.ch.wchhuangya.android.pandora.view.activity.MainActivity;
-import com.ch.wchhuangya.android.pandora.view.activity.calculator.CalculatorActivity;
+import com.ch.wchhuangya.android.pandora.view.activity.life.QueryIdentificationCardInfoActivity;
+import com.ch.wchhuangya.android.pandora.view.activity.tools.CalculatorActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,10 +47,10 @@ public class CommonGridFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.common_grid, container, false);
         switch (mType) {
             case MainActivity.TAG_LIFE:
-
+                initLifeAppData();
                 break;
             case MainActivity.TAG_TOOLS:
-                initLifeAppData();
+                initToolsAppData();
                 break;
             case MainActivity.TAG_STUDY:
 
@@ -68,12 +69,22 @@ public class CommonGridFragment extends BaseFragment {
         return view;
     }
 
-    public void initLifeAppData() {
+    public void initToolsAppData() {
         Map<String, Object> map = new HashMap<>();
 
         map.put(CommonGridFragment.APP_IMG_URL, R.mipmap.calculator);
         map.put(CommonGridFragment.APP_NAME, getContext().getResources().getString(R.string.calculator));
         map.put(CommonGridFragment.APP_URL, CalculatorActivity.class);
+
+        mData.add(map);
+    }
+
+    public void initLifeAppData() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(CommonGridFragment.APP_IMG_URL, R.mipmap.identification_card);
+        map.put(CommonGridFragment.APP_NAME, getContext().getResources().getString(R.string.query_identification));
+        map.put(CommonGridFragment.APP_URL, QueryIdentificationCardInfoActivity.class);
 
         mData.add(map);
     }

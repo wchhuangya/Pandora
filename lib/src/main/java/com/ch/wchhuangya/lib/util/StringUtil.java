@@ -49,4 +49,19 @@ public class StringUtil {
         html = html.replace("<img", "<img width=100% ");
         return html;
     }
+
+    /** 把性别标识转换为汉字 */
+    public static String convertSex(String sexFlag) {
+        if ("M".equals(sexFlag) || "m".equals(sexFlag))
+            return "男";
+        else if ("F".equals(sexFlag) || "f".equals(sexFlag))
+            return "女";
+        else
+            return "未知";
+    }
+
+    /** 删除字符串中的双绰号 */
+    public static String delDoubleQuotes(String orignalStr) {
+        return orignalStr.replace("\"", "");
+    }
 }

@@ -13,7 +13,7 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.MainBinding;
 import com.ch.wchhuangya.android.pandora.enums.MainEnum;
-import com.ch.wchhuangya.android.pandora.view.activity.calculator.CalculatorActivity;
+import com.ch.wchhuangya.android.pandora.view.activity.tools.CalculatorActivity;
 import com.ch.wchhuangya.android.pandora.view.fragment.CommonGridFragment;
 import com.ch.wchhuangya.android.pandora.view.fragment.news.NewsFragment;
 import com.ch.wchhuangya.android.pandora.vm.MainVM;

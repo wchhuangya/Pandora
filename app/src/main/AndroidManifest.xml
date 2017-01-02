@@ -19,7 +19,9 @@
 
         <activity android:name=".view.activity.news.NewsDetailActivity" android:screenOrientation="portrait" />
 
-        <activity android:name=".view.activity.calculator.CalculatorActivity" android:screenOrientation="portrait" />
+        <activity android:name=".view.activity.tools.CalculatorActivity" android:screenOrientation="portrait" />
+
+        <activity android:name=".view.activity.life.QueryIdentificationCardInfoActivity" android:screenOrientation="portrait" />
 
     </application>
 

@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.android.pandora.view.activity.calculator;
+package com.ch.wchhuangya.android.pandora.view.activity.tools;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.databinding.CalculatorBinding;
 import com.ch.wchhuangya.android.pandora.view.activity.BaseActivity;
-import com.ch.wchhuangya.android.pandora.vm.calculator.CalculatorVM;
+import com.ch.wchhuangya.android.pandora.vm.tools.CalculatorVM;
 
 /**
  * Created by wchya on 2016-12-22 17:13

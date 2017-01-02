@@ -4,4 +4,10 @@
     <string name="load_more">上拉加载更多</string>
     <string name="home">首页</string>
     <string name="calculator">计算器</string>
+    <string name="query_identification">查身份</string>
+    <string name="input_id_card_tips">请输入要查询的身份证号</string>
+    <string name="sex_title">性别：</string>
+    <string name="birth_title">生日：</string>
+    <string name="address_title">住址：</string>
+    <string name="query">查询</string>
 </resources>
