@@ -64,6 +64,7 @@ public class QueryIdentificationCardInfoVM extends BaseVM {
                         pbShow.set(false);
                     });
                 } else {
+                    pbShow.set(false);
                     CroutonUtil.showAlert(mActivity, "身份证号格式不正确", R.id.card_info_fl);
                 }
             }
