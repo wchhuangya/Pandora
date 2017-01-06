@@ -16,8 +16,8 @@ public class TimeUtil {
     }
 
     private static SimpleDateFormat sdf;
-    private static final String LONG_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    private static final String SHORT_FORMAT = "yyyy-MM-dd";
+    public static final String LONG_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String SHORT_FORMAT = "yyyy-MM-dd";
 
     /**
      * 获取当前时间

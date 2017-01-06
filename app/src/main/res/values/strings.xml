@@ -10,4 +10,17 @@
     <string name="birth_title">生日：</string>
     <string name="address_title">住址：</string>
     <string name="query">查询</string>
+    <string name="account">账号</string>
+    <string name="password">密码</string>
+    <string name="login">登  录</string>
+    <string name="forget_pwd">忘记密码？</string>
+    <string name="add_user">新增账号</string>
+    <string name="register_new_user">注册新用户</string>
+    <string name="user_name">用户名</string>
+    <string name="password_tips">密码(6~20位)</string>
+    <string name="username_tips">用户名(3~16位)</string>
+    <string name="password_repeat">重复密码</string>
+    <string name="birthday">生日</string>
+    <string name="finish_register">完成注册</string>
+    <string name="exit_login">退出登录</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.ch.wchhuangya.android.pandora.vm;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
@@ -31,6 +32,13 @@ public abstract class BaseVM {
     protected Context mContext;
     /** 所有用到的观察者 */
     protected List<Subscription> mSubscriptions = new ArrayList<>();
+    /** 公用的等待动画 */
+    protected Dialog mDialog;
+
+    public void dismissDialog() {
+        if (mDialog != null)
+            mDialog.dismiss();
+    }
 
     /** 释放持有的资源引用 */
     public abstract void reset();

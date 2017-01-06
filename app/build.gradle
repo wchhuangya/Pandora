@@ -72,4 +72,7 @@ dependencies {
 
     // 圆角图片
     compile 'com.makeramen:roundedimageview:2.2.1'
+
+    // 浮动文本
+    compile 'com.marvinlabs:android-floatinglabel-widgets:1.6.1@aar'
 }

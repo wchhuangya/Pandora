@@ -42,6 +42,9 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.2.1'
 
+    // RxBinding
+    compile 'com.jakewharton.rxbinding:rxbinding:1.0.0'
+
     // Retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     //    compile ('com.squareup.retrofit2:retrofit:2.1.0'){

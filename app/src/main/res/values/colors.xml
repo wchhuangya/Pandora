@@ -2,10 +2,12 @@
 <resources>
     <color name="colorPrimary">#1296db</color>
     <color name="colorPrimaryDark">#3456f7</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#1296db</color>
     <color name="textColorPrimary">#eeeeee</color>
 
     <color name="srl_first">#12ab34</color>
     <color name="srl_second">#abcd22</color>
     <color name="srl_third">#12abcd</color>
+
+    <color name="common_dialog_bg">#00ffffff</color>
 </resources>

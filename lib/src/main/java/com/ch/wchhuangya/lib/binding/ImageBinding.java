@@ -19,4 +19,13 @@ public class ImageBinding {
     public static void setResImg(ImageView imageView, String resImg) {
         imageView.setBackgroundResource(Integer.parseInt(resImg));
     }
+
+    @BindingAdapter({"headerImg"})
+    public static void setHeaderImg(ImageView imageView, String headerImg) {
+        if (headerImg.startsWith("LL")) {
+            imageView.setImageResource(Integer.parseInt(headerImg.substring(2)));
+        } else {
+            ImageLoaderUtil.displayCircleImage(imageView, headerImg);
+        }
+    }
 }

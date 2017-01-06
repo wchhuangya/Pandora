@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ch.wchhuangya.android.pandora.R;
-import com.ch.wchhuangya.android.pandora.databinding.CommonGridBinding;
+import com.ch.wchhuangya.android.pandora.databinding.FailCommonGridBinding;
 import com.ch.wchhuangya.android.pandora.model.FailCommonGrid;
 import com.ch.wchhuangya.lib.recyclerview.ViewHolder;
 
@@ -32,7 +32,7 @@ public class FailCommonGridAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        CommonGridBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.fail_common_grid, parent, false);
+        FailCommonGridBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.fail_common_grid, parent, false);
         return new ViewHolder(binding, new FailCommonGrid());
     }
 

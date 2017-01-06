@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="login"
+            type="com.ch.wchhuangya.android.pandora.vm.account.LoginVM"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/login_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="15dp"
+            android:background="?attr/colorPrimary"
+            app:titleTextColor="@color/textColorPrimary"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/ic_launcher"
+                />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="15dp"
+                android:background="@mipmap/app_name"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:orientation="vertical"
+            >
+
+            <FrameLayout
+                android:id="@+id/login_name_fl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.marvinlabs.widget.floatinglabel.edittext.FloatingLabelEditText
+                    android:id="@+id/login_name_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    app:flw_inputWidgetTextSize="18sp"
+                    app:flw_labelText="@string/user_name"
+                    app:flw_labelTextColor="@color/colorPrimary"
+                    app:flw_labelTextSize="20sp"
+                    />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/login_pwd_fl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.marvinlabs.widget.floatinglabel.edittext.FloatingLabelEditText
+                    android:id="@+id/login_pwd_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:inputType="textPassword"
+                    app:flw_inputWidgetTextSize="18sp"
+                    app:flw_labelText="@string/password"
+                    app:flw_labelTextColor="@color/colorPrimary"
+                    app:flw_labelTextSize="20sp"
+                    />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                >
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    app:mrl_rippleAlpha="0.2"
+                    app:mrl_rippleColor="#585858"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true"
+                    >
+
+                    <Button
+                        android:id="@+id/login_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:layout_weight="3"
+                        android:background="@color/colorPrimary"
+                        android:text="@string/login"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <TextView
+                    android:id="@+id/login_forget_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:gravity="center_horizontal"
+                    android:text="@string/forget_pwd"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

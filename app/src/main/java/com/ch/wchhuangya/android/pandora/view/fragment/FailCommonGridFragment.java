@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.ch.wchhuangya.android.pandora.R;
 import com.ch.wchhuangya.android.pandora.adapter.FailCommonGridAdapter;
-import com.ch.wchhuangya.android.pandora.databinding.CommonGridBinding;
+import com.ch.wchhuangya.android.pandora.databinding.FailCommonGridBinding;
 import com.ch.wchhuangya.android.pandora.model.FailCommonGrid;
 import com.ch.wchhuangya.android.pandora.view.activity.MainActivity;
 import com.ch.wchhuangya.android.pandora.vm.FailCommonGridVM;
@@ -26,7 +26,7 @@ import java.util.Map;
 
 public class FailCommonGridFragment extends BaseFragment {
 
-    private CommonGridBinding mBinding;
+    private FailCommonGridBinding mBinding;
     private FailCommonGridVM mFailCommonGridVM;
     private String mType;
     private List<Map<String, Object>> mData = new ArrayList<>();

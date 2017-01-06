@@ -6,17 +6,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.ch.wchhuangya.android.pandora.R;
+import com.ch.wchhuangya.android.pandora.databinding.DrawerHeaderBinding;
 import com.ch.wchhuangya.android.pandora.databinding.MainBinding;
 import com.ch.wchhuangya.android.pandora.enums.MainEnum;
 import com.ch.wchhuangya.android.pandora.view.activity.tools.CalculatorActivity;
 import com.ch.wchhuangya.android.pandora.view.fragment.CommonGridFragment;
 import com.ch.wchhuangya.android.pandora.view.fragment.news.NewsFragment;
 import com.ch.wchhuangya.android.pandora.vm.MainVM;
+import com.ch.wchhuangya.android.pandora.vm.account.HeaderVM;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -27,6 +30,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public static final String TAG_LIFE = "TAG_LIFE";
     public static final String TAG_TOOLS = "TAG_TOOLS";
     public static final String TAG_STUDY = "TAG_STUDY";
+    private DrawerHeaderBinding mHeaderBinding;
+    private HeaderVM mHeaderVM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +40,30 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         mMainVM = new MainVM(this);
         mBinding.setMainVM(mMainVM);
 
+        // 设置左滑菜单的头部
+        initHeader();
+
         // 设置 Toolbar
         initToolbar();
 
         // 设置 BottomNavigationBar
         initBottomNavBar();
 
+        // 设置 NavigationView
         initNavigationView();
 
         // 设置第一屏显示的内容
         setNewsToContents();
+    }
+
+    private void initHeader() {
+        mHeaderBinding = DrawerHeaderBinding.inflate((LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE));
+        mHeaderVM = new HeaderVM(this);
+        mHeaderVM.nickName.set("游侠一枚");
+        mHeaderBinding.setHeader(mHeaderVM);
+
+        mBinding.leftNavView.addHeaderView(mHeaderBinding.headerContainer);
+        mHeaderVM.initUser();
     }
 
     private void initToolbar() {
@@ -138,5 +157,23 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         }
         mBinding.mainDrawer.closeDrawer(Gravity.LEFT);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (resultCode) {
+            case RESULT_OK:
+                switch (requestCode) {
+                    case HeaderVM.REQUEST_LOGIN:
+                    case HeaderVM.REQUEST_INFO:
+                        mHeaderVM.setUser();
+                        break;
+                }
+                break;
+            case RESULT_CANCELED:
+                switch (requestCode) {
+                }
+                break;
+        }
     }
 }

@@ -4,6 +4,7 @@
         <!-- 为 ImageView 设置方形图片-->
         <attr name="squareImg" format="string"/>
         <attr name="resImg" format="integer" />
+        <attr name="headerImg" format="string" />
     </declare-styleable>
 
     <declare-styleable name="WebView">
